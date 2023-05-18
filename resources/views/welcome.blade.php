@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="row">
 				
-				<h1 class="lead">fMental health, Campus events, Confidentiality</h1>
+				<h1 class="lead">Mental health, Campus events, Confidentiality</h1>
 				<p class="tagline">Cette application est conçue pour aider les étudiants à prendre soin de leur santé globale en leur fournissant des informations et des ressources pertinentes et en leur permettant de suivre les événements sur le campus en temps réel.</p>
 				<p><a class="btn btn-default btn-lg" role="button">MORE INFO</a> <a class="btn btn-action btn-lg" role="button">VISIT NOW</a></p>
 			</div>
