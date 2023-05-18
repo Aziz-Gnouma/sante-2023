@@ -1,5 +1,7 @@
 <?php
-
+use App\Http\Middleware\ConsultationMiddleware;
+use App\Http\Controllers\PsyHomeController;
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvennementController;
 
@@ -19,6 +21,16 @@ use App\Http\Controllers\Admin\{
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/consultation', [ConsultationController::class, 'consultation'])->name('consultation');
+//Route::get('/consultation', function () {
+//    return view('consultation');
+//})->middleware(['front'])->name('consultation');
+Route::post('/consultation', [App\Http\Controllers\ConsultationController::class, 'store']);
+
+Route::get('/psyHome', 'PsyHomeController@index')->name('psyHome');
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -55,6 +67,7 @@ Route::get('/admin/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
+
 Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
     ->group(function(){
         Route::resource('roles','RoleController');
@@ -66,5 +79,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::put('/profile-update',[ProfileController::class,'update'])->name('profile.update');
         Route::get('/mail',[MailSettingController::class,'index'])->name('mail.index');
         Route::put('/mail-update/{mailsetting}',[MailSettingController::class,'update'])->name('mail.update');
+
+
 });
 Route::resource('events', EvennementController::class);
