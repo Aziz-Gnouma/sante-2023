@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EvennementController;
+
 use App\Http\Controllers\Admin\{
     ProfileController,
     MailSettingController,
+    
 };
 
 /*
@@ -36,10 +39,10 @@ Route::get('/test-mail',function(){
 });
 
 
+
 Route::get('/Evenement', function () {
     return view('front.Evenement');
 })->middleware(['front'])->name('Evenement');
-
 
 
 require __DIR__.'/front_auth.php';
@@ -52,17 +55,16 @@ Route::get('/admin/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-
-
 Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
     ->group(function(){
         Route::resource('roles','RoleController');
         Route::resource('permissions','PermissionController');
         Route::resource('users','UserController');
-        Route::resource('Evenement','EvenementController');
+        
 
         Route::get('/profile',[ProfileController::class,'index'])->name('profile');
         Route::put('/profile-update',[ProfileController::class,'update'])->name('profile.update');
         Route::get('/mail',[MailSettingController::class,'index'])->name('mail.index');
         Route::put('/mail-update/{mailsetting}',[MailSettingController::class,'update'])->name('mail.update');
 });
+Route::resource('events', EvennementController::class);
