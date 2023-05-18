@@ -28,7 +28,7 @@
                 class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
                 @auth
                 <img class="h-full w-full object-cover"
-                   
+                    src="/images/{{ auth()->user()->profile }}"
                     alt="Your avatar">
                     @endauth
             </button>

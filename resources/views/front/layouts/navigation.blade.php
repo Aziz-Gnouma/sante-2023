@@ -41,7 +41,7 @@
 					<li><a href="/about">About</a></li>
                 
 					<li class=""><a href="{{ url('/Evenement') }}">Evenement</a></li>
-					<li><a href="{{ url('/consultaion') }}">consultaion</a></li>
+					<li><a href="{{ url('/Consultaion') }}">Consultaion</a></li>
                     <li class="active">
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
