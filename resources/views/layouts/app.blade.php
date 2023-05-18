@@ -12,11 +12,17 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+         <!-- Styles -->
+         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/theme.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/icons.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('css5/style.min.css') }}">
+
+
+
+
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -32,6 +38,25 @@
           <script src="assetsTemplate/pages/morris-chart-demo.js"></script>
 
           <script src="{{ asset('assetsTemplate/pages/morris-chart-demo.js') }}" defer></script>
+
+          <script src="{{ asset('js2/script.js') }}" defer></script>
+          <script src="{{ asset('js2/db.data.js') }}" defer></script>
+          <script src="{{ asset('js2/db.sales.js') }}" defer></script>
+          
+          <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('lib/chart/chart.min.js') }}"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+
+
+
+
 
 
 
