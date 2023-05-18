@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvennementController;
 
@@ -19,6 +19,15 @@ use App\Http\Controllers\Admin\{
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/consultation', [ConsultationController::class, 'consultation'])->name('consultation');
+//Route::get('/consultation', function () {
+//    return view('consultation');
+//})->middleware(['front'])->name('consultation');
+
+Route::get('/consultation', function () {
+    return view('front.consultation');
+})->middleware(['front'])->name('consultation');
+Route::post('/consultation', [App\Http\Controllers\ConsultationController::class, 'store']);
 
 Route::get('/', function () {
     return view('welcome');
