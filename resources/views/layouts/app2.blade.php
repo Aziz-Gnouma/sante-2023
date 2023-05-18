@@ -39,7 +39,8 @@
 					<li class="active"><a href="/">Home</a></li>
 					<li><a href="/about">About</a></li>
 					<li><a href="{{ route('Evenement') }}">Evenement</a></li>
-					<li><a href="{{ url('/Consultaion') }}">Consultaion</a></li>
+					<li><a href="{{ url('/consultation') }}">Consultaion</a></li>
+					<li><a href="{{ url('/psyHome') }}">Psy_Home</a></li>
                     <li>@if(Route::has('admin.login'))
 		<a href="{{ route('admin.login') }}" class="py-2 px-6 flex hover:text-blue-500">Admin</a>
 

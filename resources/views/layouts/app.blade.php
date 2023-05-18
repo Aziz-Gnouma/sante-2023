@@ -392,7 +392,7 @@
                         </div>
                     @endif
 
-                    {{ $slot }}
+                    
                     
             </div>
         </div>
