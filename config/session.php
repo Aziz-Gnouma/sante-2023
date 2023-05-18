@@ -112,6 +112,8 @@ return [
     | happen on a given request. By default, the odds are 2 out of 100.
     |
     */
+    'domain' => env('SESSION_DOMAIN', null),
+
 
     'lottery' => [2, 100],
 
