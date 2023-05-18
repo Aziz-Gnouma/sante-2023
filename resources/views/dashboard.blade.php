@@ -6,7 +6,7 @@
 @endphp
 
 <x-app-layout>
-   <div>
+  
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
             <div class="container mx-auto px-6 py-8">
 <h1>change</h1>
@@ -20,7 +20,7 @@
                 </b> </p>
 
             </div>
-
+             @if(auth()->user()->hasRole('admin'))
 
             <div class="container-fluid pt-4 px-4">
                 <div style="color:white;" class="row g-4">
@@ -94,6 +94,9 @@
         </main>
     </div>
 </div>
+@else
+<h1>rourou</h1>
+@endif
 </x-app-layout>
 
 
