@@ -1,4 +1,7 @@
 <?php
+use App\Models\Answer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvennementController;
@@ -23,6 +26,40 @@ use App\Http\Controllers\Admin\{
 //Route::get('/consultation', function () {
 //    return view('consultation');
 //})->middleware(['front'])->name('consultation');
+
+
+Route::post('/answer', function (Request $request) {
+    $subject = $request->input('subject');
+    $message = $request->input('message');
+
+    // Effectuez ici la logique de sauvegarde dans la base de données
+    DB::table('answers')->insert([
+        'subject' => $subject,
+        'message' => $message,
+    ]);
+
+    // Retournez une réponse appropriée à l'utilisateur
+    return response('Answer submitted successfully!', 200);
+});
+
+
+
+
+
+
+Route::view('/contact', 'contact');
+
+Route::delete('/admin/users/{id}', function ($id) {
+    $deleted = DB::table('users')->where('id', $id)->delete();
+
+    if ($deleted) {
+        // Suppression réussie, renvoyer une réponse appropriée
+        return response()->json(['message' => 'Utilisateur supprimé avec succès'], 200);
+    } else {
+        // Utilisateur non trouvé, renvoyer une réponse d'erreur
+        return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+    }
+});
 
 Route::get('/consultation', function () {
     return view('front.consultation');
