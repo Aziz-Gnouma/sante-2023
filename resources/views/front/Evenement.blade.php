@@ -80,15 +80,10 @@
                            <div class="col-lg-4">
                                <div class="counter-text">
                                    <span> Welcome <span sec:authentication="principal.username">User</span></span>
-                                   <h3>Hey admin, you can visit your admin's home</h3>
+                                   
                                </div>
                            </div>
-                           <div class="col-lg-8">
-                               <div class="cd-item">
-                                   <a  id="price-btn" href="{{ url('events') }}">Admin Home <span class="arrow_right"></span></a>
-
-                               </div>
-                           </div>
+                           
                        </div>
                    </div>
                </div>

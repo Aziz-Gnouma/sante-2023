@@ -160,15 +160,24 @@
          
         </div>
        
-        <form class="form-detail" action="{{ route('events.update', $event->id) }}" method="post" enctype="multipart/form-data">
+        <form class="form-detail" action="{{ route('admin.events.update', $event->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT') 
-        <a href = "{{ url('/events') }}"  class="btn btn-primary" style="margin-left:800px"> Back <i class="bi bi-arrow-left-circle-fill"></i></a>
+        <a href = "{{ route('admin.events.index')}}"  class="btn btn-primary" style="margin-left:800px"> Back <i class="bi bi-arrow-left-circle-fill"></i></a>
             
             <h2>Edit Evenement</h2>
+            @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
             <div class="form-row">
-                <input type="text" name="title" id="full-name" class="input-text @error('title') is-invalid @enderror"" value="{{ old('title') ?? $event->title }}"  placeholder="Nom-event" required>
-                @error('title')
+                <input type="text" name="Nom_Evenement" id="full-name" class="input-text @error('Nom_Evenement') is-invalid @enderror"" value="{{ old('Nom_Evenement') ?? $event->Nom_Evenement }}"  placeholder="Nom-event" required>
+                @error('Nom_Evenement')
                      <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -182,6 +191,28 @@
         <div class="form-row">
                 <input type="date" name="date" id="date" class="input-text @error('date') is-invalid @enderror" value="{{ old('date') ?? $event->date }}"  placeholder="Date-Evenement " required >
                 @error('date')
+                     <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-row">
+                <input type="text" name="Nom_club" id="Nom_club" class="input-text @error('Nom_club') is-invalid @enderror"value="{{ old('Nom_club') ?? $event->Nom_club }}"  placeholder="Nom_club" >
+                @error('Nom_club')
+                     <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-row">
+                <input type="email" name="Email" id="Email" class="input-text @error('Email') is-invalid @enderror" value="{{ old('Email') ?? $event->Email }}"  placeholder="Email" required>
+                @error('Email')
+                     <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-row">
+            <select class="form-select @error('Email') is-invalid @enderror" name="publish">
+                 <option value="0" @if ($event->publish == 0) selected @endif>Non Publié</option>
+                 <option value="1" @if ($event->publish == 1) selected @endif>publié</option>
+            </select>
+
+                @error('publish')
                      <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>

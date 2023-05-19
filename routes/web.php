@@ -1,11 +1,12 @@
 <?php
 use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EvennementController;
+
 use App\Models\Appointment;
 use App\Http\Controllers\Admin\{
     ProfileController,
     MailSettingController,
+    EvenementController,
     
 };
 
@@ -77,7 +78,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('roles','RoleController');
         Route::resource('permissions','PermissionController');
         Route::resource('users','UserController');
-        Route::resource('Evenements','EvenementController');
+        Route::resource('events','EvenementController');
 
         
 
@@ -86,4 +87,4 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::get('/mail',[MailSettingController::class,'index'])->name('mail.index');
         Route::put('/mail-update/{mailsetting}',[MailSettingController::class,'update'])->name('mail.update');
 });
-Route::resource('events', EvennementController::class);
+Route::resource('events', EvenementController::class);
