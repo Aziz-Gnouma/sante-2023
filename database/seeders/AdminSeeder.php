@@ -24,20 +24,20 @@ class AdminSeeder extends Seeder
             'profile' => 'user.avif'
         ]);
 
-        $writer = User::create([
-            'name'=>'writer',
+        $user = User::create([
+            'name'=>'IEEE',
             'email'=>'Ieee@iset.com',
             'password'=>bcrypt('password')
         ]);
 
 
         $admin_role = Role::create(['name' => 'admin']);
-        $writer_role = Role::create(['name' => 'writer']);
+        $user_role = Role::create(['name' => 'user']);
 
-        $permission = Permission::create(['name' => 'Post access']);
-        $permission = Permission::create(['name' => 'Post edit']);
-        $permission = Permission::create(['name' => 'Post create']);
-        $permission = Permission::create(['name' => 'Post delete']);
+        $permission = Permission::create(['name' => 'Evenement access']);
+        $permission = Permission::create(['name' => 'Evenement edit']);
+        $permission = Permission::create(['name' => 'Evenement create']);
+        $permission = Permission::create(['name' => 'Evenement delete']);
 
         $permission = Permission::create(['name' => 'Role access']);
         $permission = Permission::create(['name' => 'Role edit']);
@@ -60,7 +60,7 @@ class AdminSeeder extends Seeder
 
 
         $admin->assignRole($admin_role);
-        $writer->assignRole($writer_role);
+        $user->assignRole($user_role);
 
 
         $admin_role->givePermissionTo(Permission::all());
