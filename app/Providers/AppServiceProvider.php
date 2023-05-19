@@ -29,13 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('dashboard', function ($view) {
-            $appointments = Appointment::all();
-            $view->with('appointments', $appointments);
-        });
-
-        $appointments = Appointment::all();
-        View::share('appointments', $appointments);
+       
 
         Schema::defaultStringLength(191);
         if (\Schema::hasTable('mailsettings')) {
