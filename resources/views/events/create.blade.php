@@ -160,9 +160,9 @@
          
         </div>
        
-        <form class="form-detail" action="{{ route('events.store') }}" method="post" enctype="multipart/form-data">
+        <form class="form-detail" action="{{ route('admin.events.store') }}" method="post" enctype="multipart/form-data">
         @csrf    
-        <a href = "{{ url('/events') }}"  class="btn btn-primary" style="margin-left:800px"> Back <i class="bi bi-arrow-left-circle-fill"></i></a>
+        <a href = "{{ route('admin.events.index')}}"  class="btn btn-primary" style="margin-left:800px"> Back <i class="bi bi-arrow-left-circle-fill"></i></a>
             <h2>Register Evenement</h2>
             @if ($errors->any())
         <div class="alert alert-danger">
@@ -174,8 +174,15 @@
         </div>
     @endif
             <div class="form-row">
-                <input type="text" name="title" id="full-name" class="input-text @error('title') is-invalid @enderror""  placeholder="Nom-event" required>
-                @error('title')
+                <input type="text" name="Nom_Evenement" id="full-name" class="input-text @error('Nom_Evenement') is-invalid @enderror""  placeholder="Nom_Evenement" required>
+                @error('Nom_Evenement')
+                     <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-row">
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3"
+                placeholder="Enter description"></textarea>
+                 @error('description')
                      <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
@@ -187,12 +194,27 @@
                 @enderror
             </div>
             <div class="form-row">
-                <input type="text" name="description" id="description" class="input-text @error('description') is-invalid @enderror""  placeholder="description" >
-                @error('description')
+                <input type="text" name="Nom_club" id="Nom_club" class="input-text @error('Nom_club') is-invalid @enderror""  placeholder="Nom_club" >
+                @error('Nom_club')
                      <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            
+            <div class="form-row">
+                <input type="email" name="Email" id="Email" class="input-text @error('Email') is-invalid @enderror""  placeholder="Email" required>
+                @error('Email')
+                     <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-row">
+            <select class="form-select @error('Email') is-invalid @enderror" name="publish">
+                 <option value="0" selected>Non Publié</option>
+                 <option value="1" >publié</option>
+            </select>
+
+                @error('publish')
+                     <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
             <div class="form-row-last">
                 <input type="submit" name="register" class="register" value="Register">

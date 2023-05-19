@@ -1,25 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 
 
-use App\Models\Evennement;
+use App\Models\Evenement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class EvennementController extends Controller
+class EvenementController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('role_or_permission:Evenement access|Evenement create|Evenement edit|Evenement delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Evenement create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Evenement edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Evenement delete', ['only' => ['destroy']]);
+    }
 
     public function index()
     {
-        $events = Evennement::all();
+        $events = Evenement::all();
 
         return view('events.index',compact('events'));
     }
@@ -31,9 +40,9 @@ class EvennementController extends Controller
      */
     public function create()
     {
-        $events = Evennement::all();
+       
 
-        return view('events.create',compact('events'));
+        return view('events.create');
     }
 
     /**
@@ -48,12 +57,16 @@ class EvennementController extends Controller
         // using function validation
         $request->validate($this->validationRules());
          // Créer un Post vide
-         $newEvent = new Evennement();
+         $newEvent = new Evenement();
        
          // Le remplir avec le contenu du formulaire
-         $newEvent->title = $request->title;
+         $newEvent->Nom_Evenement = $request->Nom_Evenement;
          $newEvent->description = $request->description;
          $newEvent->date = $request->date;
+         $newEvent->Nom_club = $request->Nom_club;
+         $newEvent->user_id = Auth::user()->id;
+         $newEvent->Email = $request->Email;
+         $newEvent->publish = $request->publish;
          // Sauvegarde dans la BD
          $newEvent->save();
  
@@ -70,7 +83,7 @@ class EvennementController extends Controller
      */
     public function show($id)
     {
-        $event = Evennement::findOrFail($id);
+        $event = Evenement::findOrFail($id);
         return view('events.show', compact('event'));
     }
 
@@ -82,7 +95,7 @@ class EvennementController extends Controller
      */
     public function edit($id)
     {
-        $event = Evennement::findOrFail($id);
+        $event = Evenement::findOrFail($id);
         return view('events.edit', compact('event'));
     }
 
@@ -97,10 +110,14 @@ class EvennementController extends Controller
     {
         $request->validate($this->validationRules());
 
-        $event = Evennement::findOrFail($id);
-        $event->title = $request->title;
+        $event = Evenement::findOrFail($id);
+        $event->Nom_Evenement = $request->Nom_Evenement;
         $event->description = $request->description;
         $event->date = $request->date;
+        $event->Nom_club = $request->Nom_club;
+        $event->user_id = Auth::user()->id;
+        $event->Email = $request->Email;
+        $event->publish = $request->publish;
         $event->save() ;
         return redirect()->route('events.show', $event->id)->with('success', 'Evenement updated successfully');
     
@@ -123,11 +140,12 @@ class EvennementController extends Controller
     }
     private function validationRules() {
         return [
-            'title' => 'required|min:5',
+            'Nom_Evenement' => 'required|min:5',
             'description' => 'required|min:10',
             'date' => 'required',
-            
-           
+            'Nom_club' => 'required|min:5',
+            'Email' => 'required',
+            'publish' => 'required',
         ];
     }
 }
