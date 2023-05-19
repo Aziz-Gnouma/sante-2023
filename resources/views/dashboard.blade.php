@@ -94,7 +94,8 @@
         </main>
     </div>
 </div>
-@else
+@else 
+
 <div class="bg-white shadow-md rounded my-6">
                 <table class="table table-hover">
                   <thead class="table-dark">
@@ -130,7 +131,9 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26
                   </tbody>
                 </table>
               </div>
+             
                                                     
+
 @endif
 </x-app-layout>
 

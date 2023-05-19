@@ -77,7 +77,7 @@
                <div class="counter-section bg-gradient">
                    <div class="container">
                        <div class="row">
-                           <div class="col-lg-4">
+                           <div class="">
                                <div class="counter-text">
                                    <span> Welcome <span sec:authentication="principal.username">User</span></span>
                                    
@@ -180,7 +180,7 @@
    <!-- Home About Section End -->
 
    <!-- Team Member Section Begin -->
-   <section id="img" class="team-member-section" style=" width:115%;margin-left:70px">
+   <section style="width: 125%; margin-left: 0.0%;"  id="img" class="team-member-section" style=" width:115%;margin-left:70px">
        <div class="container">
            <div class="row">
                <div class="col-lg-12">
@@ -335,7 +335,7 @@
    <!-- Team Member Section End -->
 
    <!-- Schedule Section Begin -->
-   <section class="schedule-section spad">
+   <section style="margin-left: 0.4%;" class="schedule-section spad">
        <div class="container">
            <div class="row">
                <div class="col-lg-12">
@@ -381,164 +381,7 @@
                            </li>
                        </ul><!-- Tab panes -->
                        <div class="tab-content">
-                           <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                               <table border="1" class = "table table-striped table-responsive-md">
-                                   <thead>
-                                   <tr>
-                                       <th>
-                                           <a>
-                                               nom event </a>
-                                       </th>
-
-                                       <th>
-                                           <a>
-                                               organisateur</a>
-                                       </th>
-
-                                       <th>
-                                           <a>
-                                               Date event</a>
-                                       </th>
-                                       <th>
-                                           <a>
-                                               description </a>
-                                       </th>
-
-                                       <th>
-                                           <a>
-                                               Email</a>
-                                       </th>
-                                       <th> Actions </th>
-                                   </tr>
-                                   </thead>
-                                   <tbody>
-                                   <tr th:each="ok : ${Evenement}">
-                                       <td th:text="${ok.nomEvenement}"></td>
-                                       <td th:text="${ok.nom_club}"></td>
-                                       <td th:text="${ok.time}"></td>
-                                       <td th:text="${ok.description}"></td>
-                                       <td th:text="${ok.email}"></td>
-                                       <td> <a th:href="@{/showFormForUpdate/{id}(id=${ok.id})}" class="btn btn-primary">Update</a>
-                                           <a th:href="@{/deleteEvenement/{id}(id=${ok.id})}" class="btn btn-danger">Delete</a>
-                                       </td>
-                                   </tr>
-
-                                   </tr>
-                                   </tbody>
-                               </table>
-                               <div class="st-content">
-                                   <div class="container">
-                                       <div class="row">
-                                           <div class="col-lg-3">
-                                               <div class="sc-pic">
-                                                   <img src="/patron/img/schedule/schedule-1.jpg" alt="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-5">
-                                               <div class="sc-text">
-                                                   <h4>Dealing with Difficult People</h4>
-                                                   <ul>
-                                                       <li><i class="fa fa-user"></i> John Smith</li>
-                                                       <li><i class="fa fa-envelope"></i> john@Colorlib.com
-                                                       </li>
-                                                   </ul>
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-4">
-                                               <ul class="sc-widget">
-                                                   <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                   <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
-                                                   </li>
-                                               </ul>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div class="st-content">
-                                   <div class="container">
-                                       <div class="row">
-                                           <div class="col-lg-3">
-                                               <div class="sc-pic">
-                                                   <img src="/patron/img/schedule/schedule-2.jpg" alt="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-5">
-                                               <div class="sc-text">
-                                                   <h4>V7 Digital Photo Printing</h4>
-                                                   <ul>
-                                                       <li><i class="fa fa-user"></i> John Smith</li>
-                                                       <li><i class="fa fa-envelope"></i> john@Colorlib.com
-                                                       </li>
-                                                   </ul>
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-4">
-                                               <ul class="sc-widget">
-                                                   <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                   <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
-                                                   </li>
-                                               </ul>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div class="st-content">
-                                   <div class="container">
-                                       <div class="row">
-                                           <div class="col-lg-3">
-                                               <div class="sc-pic">
-                                                   <img src="/patron/img/schedule/schedule-3.jpg" alt="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-5">
-                                               <div class="sc-text">
-                                                   <h4>Beyond The Naked Eye</h4>
-                                                   <ul>
-                                                       <li><i class="fa fa-user"></i> John Smith</li>
-                                                       <li><i class="fa fa-envelope"></i> john@Colorlib.com
-                                                       </li>
-                                                   </ul>
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-4">
-                                               <ul class="sc-widget">
-                                                   <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                   <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
-                                                   </li>
-                                               </ul>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div class="st-content">
-                                   <div class="container">
-                                       <div class="row">
-                                           <div class="col-lg-3">
-                                               <div class="sc-pic">
-                                                   <img src="/patron/img/schedule/schedule-4.jpg" alt="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-5">
-                                               <div class="sc-text">
-                                                   <h4>Influencing The Influencer</h4>
-                                                   <ul>
-                                                       <li><i class="fa fa-user"></i> John Smith</li>
-                                                       <li><i class="fa fa-envelope"></i> john@Colorlib.com
-                                                       </li>
-                                                   </ul>
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-4">
-                                               <ul class="sc-widget">
-                                                   <li><i class="fa fa-clock-o"></i> 08:00 am - 10:00 AM</li>
-                                                   <li><i class="fa fa-map-marker"></i> 59 Breanne Canyon Suite, USA
-                                                   </li>
-                                               </ul>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
+                         
                            <div class="tab-pane" id="tabs-2" role="tabpanel">
                                <div class="st-content">
                                    <div class="container">
@@ -1006,7 +849,7 @@
 
 
    <!-- latest BLog Section Begin -->
-   <section class="latest-blog spad">
+   <section     style=" margin-left: 0.2%; " class="latest-blog spad">
        <div class="container">
            <div class="row">
                <div class="col-lg-12">
@@ -1048,7 +891,7 @@
    <!-- latest BLog Section End -->
 
    <!-- Newslatter Section Begin -->
-   <section class="newslatter-section">
+   <section style="margin-left: 0.2%;"  class="newslatter-section">
        <div class="container">
            <div class="newslatter-inner set-bg" data-setbg="/patron/img/newslatter-bg.jpg">
                <div class="ni-text">
@@ -1067,7 +910,7 @@
 
 
     <!-- Contact Section Begin -->
-    <section class="contact-section spad">
+    <section style=""  class="contact-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
