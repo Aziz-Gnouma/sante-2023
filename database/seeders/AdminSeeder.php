@@ -34,10 +34,10 @@ class AdminSeeder extends Seeder
         $admin_role = Role::create(['name' => 'admin']);
         $writer_role = Role::create(['name' => 'writer']);
 
-        $permission = Permission::create(['name' => 'Post access']);
-        $permission = Permission::create(['name' => 'Post edit']);
-        $permission = Permission::create(['name' => 'Post create']);
-        $permission = Permission::create(['name' => 'Post delete']);
+        $permission = Permission::create(['name' => 'Evenement access']);
+        $permission = Permission::create(['name' => 'Evenement edit']);
+        $permission = Permission::create(['name' => 'Evenement create']);
+        $permission = Permission::create(['name' => 'Evenement delete']);
 
         $permission = Permission::create(['name' => 'Role access']);
         $permission = Permission::create(['name' => 'Role edit']);
