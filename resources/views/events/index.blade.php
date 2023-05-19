@@ -14,6 +14,7 @@
     
 </head>
 <body>
+
     <div class="container my-2" >
 		<h1 class="text-center">Evenements List</h1>
         
@@ -21,53 +22,69 @@
         <div class="alert alert-success" role="alert" style="font-size:15px">
             {{ Session::get('success') }}
         </div>
-    @endif
-		<a href = "{{ Route('events.create') }}" class="btn btn-primary btn-sm mb-3" style="font-size:15px"> Add Evenement <i class="bi bi-plus-circle-fill"></i> </a>
-		<br>
-		<table border="1" class = "table table-striped table-responsive-md text-center" style="font-size:15px" >
-			<thead class="text-center">
-			<tr >
-				<th style="width:200px">
-					nom event 
-				</th>
-				<th style="width:200px">
-					description 
-				</th>
-				<th style="width:200px">
-					Date event
-				</th>
-				<th style="width:5px"> Actions </th>
-			</tr>
-			</thead>
-			<tbody>
-            @foreach ($events as $event)
-			
+        @endif
+	
+     <div>
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+          <br><br>
+            <div class="container mx-auto px-6 py-2">
+                <div class="text-right">
+                  @can('Evenement create')
+                    <a href="{{route('admin.events.create')}}" class="btn btn-primary btn-sm mb-3 py-2 mx-2 my-2 px-3">Add Evenement <i class="bi bi-plus-circle-fill"></i></a>
+                  @endcan
+                  <a href="{{route('admin.dashboard')}}" class="btn btn-primary btn-sm mb-3 py-2   px-3" style="margin-left:1000px">Admin</a>
+                </div>
+               
 
-                <tr>
-                    <th scope="row" >{{ $event->title }}</th>
-					<td>{{ substr($event->description, 0, 50) . '...' }}</td>
-                    <td >{{ $event->date }}</td>
-                    <td>
-                        <a href="{{ url('/events/' . $event->id) }}" class="btn btn-primary" style="font-size:15px"><i class="bi bi-info-circle-fill"></i></a><br>
-                        <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning" style="font-size:15px"><i class="bi bi-pencil-square"></i></a>
-                        <form action="{{ route('events.destroy', $event->id) }}" onsubmit="return confirm('Delete Event ?')" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" style="font-size:15px"><i class="bi bi-trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-           
-			@endforeach
-			</tbody>
+              <div class="bg-white shadow-md rounded my-6">
+                <table class="table table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">Nom_Evenement</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">Nom_club</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">Email_Club</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">Date</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">Description</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody style="background: rgb(255,255,255);background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26%, rgba(192,192,198,1) 100%);">
+                    
+                    @can('Evenement access')
+                      @foreach($events as $event)
+                      <tr class="hover:bg-grey-lighter">
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $event->Nom_Evenement }}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $event->Nom_club }}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $event->Email }}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $event->date }}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $event->description }}</td>
 
-		</table>
+                        <td class="py-4 px-6 border-b border-grey-light text-right">
+                        <a href="{{route('admin.events.edit', $event->id)}}" class="btn btn-primary" style="font-size:15px"><i class="bi bi-info-circle-fill"></i></a>
+                          @can('Evenement edit')
+                          <a style="background-color: blue; color: white;" href="{{route('admin.events.edit', $event->id)}}" class="btn btn-warning"><i style="font-size:15px" class="bi bi-pencil-square"></i></a>
+                          @endcan
 
-		
-	</div>
+                          @can('Evenement delete')
+                          <form action="{{ route('admin.events.destroy', $event->id) }}" onsubmit="return confirm('Delete Event ?')" method="POST" class="inline">
+                              @csrf
+                              @method('delete')
+                              <button  class="btn btn-danger" style="font-size:15px"><i class="bi bi-trash"></i></button>
+                          </form>
+                          @endcan
+                        </td>
+                      </tr>
+                      @endforeach
+                      @endcan
 
 
-	</div>
-
+                  </tbody>
+                </table>
+              </div>
+  
+            </div>
+        </main>
+        </div>
+</div>
 </body>
 </html>

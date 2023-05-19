@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+<<<<<<< HEAD
         View::composer('contact', function ($view) {
             $appointment = Appointment::find(request()->input('appointment'));
             $view->with('appointment', $appointment);
@@ -39,6 +40,15 @@ class AppServiceProvider extends ServiceProvider
             $appointment = $appointmentId ? Appointment::find($appointmentId) : null;
             $view->with('appointment', $appointment);
         });
+=======
+        View::composer('dashboard', function ($view) {
+            $appointments = Appointment::all();
+            $view->with('appointments', $appointments);
+        });
+
+        $appointments = Appointment::all();
+        View::share('appointments', $appointments);
+>>>>>>> 4c54f03d1ddf34ce39e0c2301895b549eeff6f67
 
         Schema::defaultStringLength(191);
 

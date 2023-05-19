@@ -157,7 +157,7 @@
             <div class="container my-5">
     <div class="bg-body-tertiary p-5 rounded">
       <div class="col-sm-8 py-5 mx-auto">
-      <a href = "{{ url('/events') }}"  class="btn btn-primary" style="margin-left:800px"> Back <i class="bi bi-arrow-left-circle-fill"></i></a>
+      <a href = "{{ route('admin.events.index')}}"  class="btn btn-primary" style="margin-left:800px"> Back <i class="bi bi-arrow-left-circle-fill"></i></a>
             
       <h2 class="text-center display-5 fw-normal">Evenement details </h2>
       
@@ -168,10 +168,13 @@
     @endif
     <br><br>
         <div class="card mx-2 px-5 py:5 my-2 w-5 " style="padding:20px" >
-        <p class="fs-5">Nom Evenement : <span class=" text-success" >{{ $event->title }} </span></p> 
+        <p class="fs-5">Nom Evenement : <span class=" text-success" >{{ $event->Nom_Evenement }} </span></p> 
         <p class="fs-5">Description : <span class="text-success">{{ $event->description }}</span></p>
+        <p class="fs-5">Nom du Club : <span class="text-success">{{ $event->Nom_club }}</span></p>
+        <p class="fs-5">Email :<span class="text-success"> {{ $event->Email }}</span></p>
+        <p class="fs-5">Statut Publication :<small class="text-body-secondary text-success"> {{ $event->publish }}</small></p>
         <p class="fs-5">Date Evenement :<small class="text-body-secondary text-success"> {{ $event->date }}</small></p>
-       
+      
         </div>
     </div>
     </div>
