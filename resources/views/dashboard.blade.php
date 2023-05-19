@@ -75,7 +75,7 @@
                     <div class="col-sm-12 col-xl-6">
                         <div  style="background:linear-gradient(180deg, rgba(222,225,230,1) 0%, rgba(0,5,28,1) 0%, rgba(2,22,108,1) 33%, rgba(1,10,42,1) 100%) ;" class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 style="color:white;" class="mb-0">Worldwide Sales</h6>
+                                <h6 style="color:white;" class="mb-0">Taux de participation</h6>
                                 <a style="color:white;" href="">Show All</a>
                             </div>
                             <canvas id="worldwide-sales" style="display: block; box-sizing: border-box; height: 356.8px; width: 715.2px;" width="894" height="446"></canvas>                        </div>
@@ -83,7 +83,7 @@
                     <div class="col-sm-12 col-xl-6">
                         <div style="background:linear-gradient(180deg, rgba(222,225,230,1) 0%, rgba(0,5,28,1) 0%, rgba(2,22,108,1) 33%, rgba(1,10,42,1) 100%) ;" class=" text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 style="color:white;" class="mb-0">Salse & Revenue</h6>
+                                <h6 style="color:white;" class="mb-0">Appointment</h6>
                                 <a style="color:white;" href="">Show All</a>
                             </div>
                             <canvas id="salse-revenue"></canvas>
@@ -95,7 +95,42 @@
     </div>
 </div>
 @else
-<h1>rourou</h1>
+<div class="bg-white shadow-md rounded my-6">
+                <table class="table table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">User Name</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">email</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">number</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">appoiment Date</th>
+                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody style="background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26%, rgba(192,192,198,1) 100%);">
+                    
+
+                      @foreach ($appointments as $appointment)
+        <tr>
+            <td>{{ $appointment->name }}</td>
+            <td>{{ $appointment->email }}</td>
+            <td>{{ $appointment->number }}</td>
+            <td>{{ $appointment->date }}</td>
+            <td class="py-4 px-6 border-b border-grey-light text-right">
+                                                    <a href="http://127.0.0.1:8000/admin/users/2/edit" style="background-color: blue; color: white; " class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Accept</a>
+                          
+                                                    <form action="http://127.0.0.1:8000/admin/users/2" method="POST" class="inline">
+                              <input type="hidden" name="_token" value="cSL77gTFpaKQ8fLh4kaWzMd4frFwcxFHqRnKBoEU">                              <input type="hidden" name="_method" value="delete">                              <button id="zzh" style="background-color: red; color: white;"class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue">refuse</button>
+                          </form>
+                          
+                        </td>
+        </tr>
+        @endforeach
+                                          
+                  </tbody>
+                </table>
+              </div>
+                                                    
 @endif
 </x-app-layout>
 
