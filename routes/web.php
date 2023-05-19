@@ -2,7 +2,7 @@
 use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvennementController;
-
+use App\Models\Appointment;
 use App\Http\Controllers\Admin\{
     ProfileController,
     MailSettingController,
@@ -32,6 +32,12 @@ Route::post('/consultation', [App\Http\Controllers\ConsultationController::class
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    $appointments = Appointment::all();
+    return view('dashboard', compact('appointments'));
+});
+
 
 
 Route::get('/test-mail',function(){
