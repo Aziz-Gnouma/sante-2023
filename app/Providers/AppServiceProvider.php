@@ -28,8 +28,7 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-
-    {  Schema::defaultStringLength(191);
+    {
         View::composer('dashboard', function ($view) {
             $appointments = Appointment::all();
             $view->with('appointments', $appointments);
@@ -40,7 +39,6 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
         if (\Schema::hasTable('mailsettings')) {
-
             $mailsetting = Mailsetting::first();
             if($mailsetting){
                 $data = [
