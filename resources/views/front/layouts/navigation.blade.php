@@ -23,6 +23,12 @@
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 </head>
+<style>
+  #ooo {
+    color:red;
+    margin-top: 3%;
+  }
+</style>
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
@@ -42,11 +48,11 @@
                 
 					<li class=""><a href="{{ url('/Evenement') }}">Evenement</a></li>
 					<li><a href="{{ url('/Consultaion') }}">Consultaion</a></li>
-                    <li class="active">
-                    <form method="POST" action="{{ route('logout') }}">
+                    <li id="ooo" style="margin-top: 3%;" class="active">
+                    <form  method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
+                    <x-responsive-nav-link id="logbtn" :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}

@@ -87,6 +87,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 Route::get('/dashboard', function () {
     $appointments = Appointment::all();
     return view('dashboard', compact('appointments'));

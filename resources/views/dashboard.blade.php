@@ -2,15 +2,16 @@
 @php
     $totalUsers = DB::table('frontusers')->count();
     $totalAdmins = DB::table('users')->count();
+    $totalevnts = DB::table('evenements')->count();
+
+
 
 @endphp
 
 <x-app-layout>
   
         <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-            <div class="container mx-auto px-6 py-8">
-<h1>change</h1>
-                
+            <div class="container mx-auto px-6 py-8">                
                 <h3 class="text-gray-700 text-3xl font-medium">Welcome : {{ auth()->user()->name }}</h3>                
 
                 <p>Role : <b>
@@ -20,7 +21,7 @@
                 </b> </p>
 
             </div>
-             @if(auth()->user()->hasRole('admin'))
+             @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('responsable club'))
 
             <div class="container-fluid pt-4 px-4">
                 <div style="color:white;" class="row g-4">
@@ -64,7 +65,7 @@
 </svg>
                             <div class="ms-3">
                             <p style="font-weight: bolder; color:black ;" class="mb-2">Total number of Shows</p>
-                            <h6 style="font-weight: bolder; color:white ; margin-left:50%;" class="mb-0">{{ $totalUsers }}</h6>
+                            <h6 style="font-weight: bolder; color:white ; margin-left:50%;" class="mb-0">{{ $totalevnts }}</h6>
                             </div>
                         </div>
                     </div>

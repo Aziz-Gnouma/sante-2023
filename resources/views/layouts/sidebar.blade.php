@@ -3,7 +3,7 @@
                 <div class="flex items-center">
                       
 
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="/">
                         <span  class="text-white text-2xl mx-2 font-semibold">Student Health Hub</span>
                     </a>
                 </div>
