@@ -27,20 +27,36 @@ use App\Http\Controllers\Admin\{
 //Route::get('/consultation', function () {
 //    return view('consultation');
 //})->middleware(['front'])->name('consultation');
+Route::delete('/admin/appointments/{name}', function ($id) {
+    // Code pour supprimer l'élément avec l'ID donné
+    // Utilisez le modèle approprié et la méthode delete()
+    // Assurez-vous de gérer les erreurs
+    
+    return response()->json(['message' => 'Appointment deleted successfully']);
+});
+
+
+
+
 
 
 Route::post('/answer', function (Request $request) {
-    $subject = $request->input('subject');
-    $message = $request->input('message');
-
-    // Effectuez ici la logique de sauvegarde dans la base de données
-    DB::table('answers')->insert([
-        'subject' => $subject,
-        'message' => $message,
+    // Validation des données du formulaire
+    $validatedData = $request->validate([
+        'subject' => 'required',
+        'message' => 'required',
     ]);
 
-    // Retournez une réponse appropriée à l'utilisateur
-    return response('Answer submitted successfully!', 200);
+    // Création d'une nouvelle instance du modèle Answer
+    $answer = new Answer();
+    $answer->subject = $validatedData['subject'];
+    $answer->message = $validatedData['message'];
+
+    // Sauvegarde de l'objet Answer dans la base de données
+    $answer->save();
+
+    // Redirection vers une autre page ou affichage d'un message de succès
+    return redirect()->back()->with('success', 'Answer sent successfully!');
 });
 
 

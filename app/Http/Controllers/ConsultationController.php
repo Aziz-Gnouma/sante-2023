@@ -34,6 +34,9 @@ class ConsultationController extends Controller
     $appointment->save();
 
     return redirect('/')->with('success', 'Appointment has been added.');
+    $appointment = Appointment::find(1); // Remplacez 1 par l'ID de l'appointment que vous souhaitez afficher
+
+    return view('front.consultation', compact('appointment'));
 }
 
     
