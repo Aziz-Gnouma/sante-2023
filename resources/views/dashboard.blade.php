@@ -3,6 +3,8 @@
     $totalUsers = DB::table('frontusers')->count();
     $totalAdmins = DB::table('users')->count();
     $totalevnts = DB::table('evenements')->count();
+    $totalcons = DB::table('appointments')->count();
+
 
 
 
@@ -31,7 +33,7 @@
   <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
 </svg>                            <div class="ms-3">
                             <p style="font-weight: bolder; color:black ;" class="mb-2">Total number of Consultasion</p>
-                            <h6 style="font-weight: bolder; color:white ; margin-left:50%;" class="mb-0">{{ $totalUsers }}</h6>
+                            <h6 style="font-weight: bolder; color:white ; margin-left:50%;" class="mb-0">{{ $totalcons }}</h6>
                             </div>
                         </div>
                     </div>
