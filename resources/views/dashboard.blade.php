@@ -94,7 +94,7 @@
         </main>
     </div>
 </div>
-@else 
+@elseif(auth()->user()->hasRole('psy'))
 
 <div class="bg-white shadow-md rounded my-6">
                 <table class="table table-hover">
@@ -118,10 +118,39 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26
             <td>{{ $appointment->number }}</td>
             <td>{{ $appointment->date }}</td>
             <td class="py-4 px-6 border-b border-grey-light text-right">
-                                                    <a href="http://127.0.0.1:8000/admin/users/2/edit" style="background-color: blue; color: white; " class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Accept</a>
+                                                    <a href="/contact" style="background-color: blue; color: white; " class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Accept</a>
                           
                                                     <form action="http://127.0.0.1:8000/admin/users/2" method="POST" class="inline">
-                              <input type="hidden" name="_token" value="cSL77gTFpaKQ8fLh4kaWzMd4frFwcxFHqRnKBoEU">                              <input type="hidden" name="_method" value="delete">                              <button id="zzh" style="background-color: red; color: white;"class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue">refuse</button>
+                              <input type="hidden" name="_token" value="cSL77gTFpaKQ8fLh4kaWzMd4frFwcxFHqRnKBoEU">                              <input type="hidden" name="_method" value="delete">                              <button class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue delete-appointment" id="zzh" style="background-color: red; color: white;"class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue">refuse</button>
+                              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.delete-appointment').click(function(e) {
+            e.preventDefault();
+            var row = $(this).closest('tr'); // Récupère la ligne parente du bouton de suppression
+            var appointmentId = row.data('appointment-id'); // Obtient l'ID de l'élément à supprimer
+            var confirmation = confirm("Are you sure you want to delete this appointment?"); // Demande une confirmation
+
+            if (confirmation) {
+                $.ajax({
+                    url: '/admin/appointments/' + appointmentId, // URL de la route de suppression
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        row.remove(); // Supprime la ligne de la table
+                        alert("Appointment deleted successfully.");
+                    },
+                    error: function(xhr) {
+                        alert("An error occurred while deleting the appointment.");
+                    }
+                });
+            }
+        });
+    });
+</script>
+
                           </form>
                           
                         </td>
