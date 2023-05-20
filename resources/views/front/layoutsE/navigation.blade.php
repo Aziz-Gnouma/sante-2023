@@ -42,6 +42,37 @@
                 
 					<li class=""><a href="{{ route('Evenement') }}">Evenement</a></li>
 					<li><a href="{{ route('consultation') }}">Consultaion</a></li>
+                    @php
+                    $userID = Auth::guard('front')->user()->id;
+
+                    $participants = DB::table('participants')->where('user_id', $userID)->get();
+                    $interessants = DB::table('participants')->where('user_id', $userID)->get();
+                    $x = count($participants)
+
+                    @endphp
+                    <li>
+                    <div class="dropdown d-inline-block ml-2">
+                            <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-bell-outline" ata-toggle="modal"></i>
+                                <span class="badge badge-danger badge-pill">{{ $x }}</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                                aria-labelledby="page-header-notifications-dropdown">
+                                @foreach ($participants as $participant)
+                                <div class="p-3">
+                                   <h6 style="color:white;">{{ $participant->evennement_id }}</h6>
+
+                                </div>
+                                <div data-simplebar style="max-height: 230px;">
+                                   
+                                @endforeach
+
+                                </div>
+                               
+                            </div>
+                        </div>
+                        </li>
                     <li class="active">
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
