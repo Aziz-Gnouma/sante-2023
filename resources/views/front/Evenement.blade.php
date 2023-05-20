@@ -100,7 +100,7 @@
 
 
                        <div>
-                           <span>5 to 9 may 2019, mardavall hotel, New York</span>
+                           <span>5 to 9 may 2024, mardavall hotel, Tunis</span>
                            <h2>Change Your Mind<br /> To Become Sucess</h2>
                            <a href="#" class="primary-btn">See you Soon</a>
                        </div>
@@ -336,7 +336,7 @@
    <!-- Team Member Section End -->
 
    <!-- Schedule Section Begin -->
-   <section style="margin-left: 0%;" class="schedule-section spad">
+   <section style="margin-left: -6%;" class="schedule-section spad">
        <div class="container">
            <div class="row">
                <div class="col-lg-12">
@@ -455,7 +455,7 @@
                        <div class="li-tag">Marketing</div>
                        <div class="li-text">
                            <h4><a href="./blog-details.html">Improve You Business Cards And Enchan Your Sales</a></h4>
-                           <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+                           <span><i class="fa fa-clock-o"></i> 19th May, 2022</span>
                        </div>
                    </div>
                </div>
@@ -464,14 +464,14 @@
                        <div class="li-tag">Experience</div>
                        <div class="li-text">
                            <h5><a href="./blog-details.html">All users on MySpace will know that there are millions of people out there.</a></h5>
-                           <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+                           <span><i class="fa fa-clock-o"></i> 19th May, 2023</span>
                        </div>
                    </div>
                    <div class="latest-item set-bg" data-setbg="/patron/img/blog/latest-b/latest-3.jpg">
                        <div class="li-tag">Marketing</div>
                        <div class="li-text">
                            <h5><a href="./blog-details.html">A Pocket PC is a handheld computer, which features many of the same capabilities.</a></h5>
-                           <span><i class="fa fa-clock-o"></i> 19th May, 2019</span>
+                           <span><i class="fa fa-clock-o"></i> 19th May, 2023</span>
                        </div>
                    </div>
                </div>
