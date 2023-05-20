@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="assetsAbout/images/favicon.png" rel="shortcut icon" type="image/png">
+
+<!-- Bootstrap -->
+<link href="assetsAbout/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- animated-css -->
+<link href="assetsAbout/css/animate.min.css" rel="stylesheet" type="text/css">
+<!-- font-awesome-css -->
+<link href="assetsAbout/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- owl-carrosel-css -->
+<link href="assetsAbout/owl-carrosel/owl.carousel.min.css" rel="stylesheet" type="text/css">
+<link href="assetsAbout/owl-carrosel/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+<!-- Slick-Slider-css -->
+<link href="assetsAbout/slick-slider/slick.css" rel="stylesheet" type="text/css">
+<link href="assetsAbout/slick-slider/slick-theme.css" rel="stylesheet" type="text/css">
+<!-- Revulation Slider CSS -->
+<link rel="stylesheet" type="text/css" href="assetsAbout/rs-plugin/css/settings.css" media="screen" />
+<!-- offcanvas-menu-css -->
+<link href="assetsAbout/css/offcanvas-menu.css" rel="stylesheet" type="text/css">
+<!-- style-css -->
+<link href="assetsAbout/css/style.css" rel="stylesheet" type="text/css">
+
 	<meta charset="utf-8">
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
