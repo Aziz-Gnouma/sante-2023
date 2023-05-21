@@ -37,28 +37,22 @@ Route::delete('/admin/appointments/{name}', function ($id) {
 
 
 
+Route::view('/listeConsultationAccepter', 'listeConsultationAccepter');
 
 
 
-Route::post('/answer', function (Request $request) {
-    // Validation des données du formulaire
+Route::post('/answer', function (Illuminate\Http\Request $request) {
     $validatedData = $request->validate([
         'subject' => 'required',
         'message' => 'required',
+        'name' => 'required',
     ]);
 
-    // Création d'une nouvelle instance du modèle Answer
-    $answer = new Answer();
-    $answer->subject = $validatedData['subject'];
-    $answer->message = $validatedData['message'];
 
-    // Sauvegarde de l'objet Answer dans la base de données
-    $answer->save();
+    DB::table('answers')->insert($validatedData);
 
-    // Redirection vers une autre page ou affichage d'un message de succès
-    return redirect()->back()->with('success', 'Answer sent successfully!');
-});
-
+    return redirect()->back()->with('success', 'Answer saved successfully!');
+})->name('answer.store');
 
 
 

@@ -208,7 +208,7 @@
         
         @csrf
             <h3>make appointment</h3>
-            <input type="text"name="name" placeholder="your name" class="box">
+            <input type="text"name="name" placeholder="your name" class="box" class="input1" >
             <input type="number"name="number" placeholder="your number" class="box">
             <input type="email"name="email" placeholder="your email" class="box">
             <input type="date"name="date" class="box">
@@ -272,9 +272,9 @@
             </div>
             <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sapiente nihil aperiam? Repellat sequi nisi aliquid perspiciatis libero nobis rem numquam nesciunt alias sapiente minus voluptatem, reiciendis consequuntur optio dolorem!</p>
         </div>
-
+      
     </div>
-
+<h3><a href='http://localhost:8000/listeConsultationAccepter'>liste des consultation accepter</a></div>
 </section>
 
 <!-- review section ends -->

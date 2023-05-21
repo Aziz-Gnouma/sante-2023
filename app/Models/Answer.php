@@ -12,8 +12,5 @@ class Answer extends Model
 
     
 }
-$answer = new Answer();
-$answer->subject = $request->input('subject');
-$answer->message = $request->input('message');
-$answer->save();
+
 

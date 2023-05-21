@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnswersTable extends Migration
+class AddNameToAppointments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
-            $table->id();
-            $table->string('subject');
-            $table->text('message');
-            $table->timestamps();
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->string('name')->nullable();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -28,6 +24,8 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::table('appointments', function (Blueprint $table) {
+            //
+        });
     }
 }

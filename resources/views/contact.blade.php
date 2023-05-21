@@ -3456,19 +3456,26 @@ textarea.input1 + .shadow-input1 {
 <div class="contact1">
     <div class="container-contact1">
         <div class="contact1-pic js-tilt" data-tilt>
-            
+            <h1 style=" color: green">Welcome Doctor</h1>
         </div>
         
+		
 		<form method="POST" action="/answer" class="contact1-form validate-form">
+
     <!-- Reste du formulaire -->
     @csrf
 
     <span class="contact1-form-title">Answer</span>
+    <div class="wrap-input1 validate-input" data-validate="Subject is required">
+        <input class="input1" type="text" name="name" placeholder="User Name">
+        <span class="shadow-input1"></span>
+    </div>
 
     <div class="wrap-input1 validate-input" data-validate="Subject is required">
         <input class="input1" type="text" name="subject" placeholder="Fix date by hour and consultation type">
         <span class="shadow-input1"></span>
     </div>
+	
 
     <div class="wrap-input1 validate-input">
         <textarea class="input1" name="message" placeholder="Other description"></textarea>
@@ -3476,33 +3483,17 @@ textarea.input1 + .shadow-input1 {
     </div>
 
     <div class="container-contact1-form-btn">
-        <button onclick="href='http://127.0.0.1:8000/admin/dashboard'"  class="contact1-form-btn" on>
-            <span>Send answer</span>
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </button>
+	<button onclick="window.location.href='http://127.0.0.1:8000/admin/dashboard'" class="contact1-form-btn">
+    <span>Send answer</span>
+    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+</button>
     </div>
 </form>
 
     </div>
 </div>
 
-@foreach ($appointments as $appointment)
-<tr>
-    <td>{{ $appointment->name }}</td>
-    <td>{{ $appointment->email }}</td>
-    <td>{{ $appointment->number }}</td>
-    <td>{{ $appointment->date }}</td>
-    <td class="py-4 px-6 border-b border-grey-light text-right">
-        <a href="/contact?name={{ $appointment->name }}&email={{ $appointment->email }}" style="background-color: blue; color: white;" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Accept</a>
-                          
-        <form action="http://127.0.0.1:8000/admin/users/2" method="POST" class="inline">
-            <input type="hidden" name="_token" value="cSL77gTFpaKQ8fLh4kaWzMd4frFwcxFHqRnKBoEU">
-            <input type="hidden" name="_method" value="delete">
-            <button id="zzh" style="background-color: red; color: white;" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue">refuse</button>
-        </form>
-    </td>
-</tr>
-@endforeach
+
 
 
 <!--===============================================================================================-->
