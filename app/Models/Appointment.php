@@ -11,7 +11,7 @@ class Appointment extends Model
     protected $fillable = ['name', 'number', 'email', 'date'];
 
     public function getAnswers(): HasOne
-    {
+     {
         return $this->hasOne(Answer::class);
     }
 }
