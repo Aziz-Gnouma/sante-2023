@@ -7,6 +7,7 @@ use App\Models\Mailsetting;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\View;
+use App\Models\Answer;
 
 use Config;
 
@@ -29,6 +30,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+       
+        View::composer('listeConsultationAccepter', function ($view) {
+            $answers = Answer::all();
+            $view->with('answers', $answers);
+        });
+
         View::composer('dashboard', function ($view) {
             $appointments = Appointment::all();
             $view->with('appointments', $appointments);
@@ -59,3 +66,4 @@ class AppServiceProvider extends ServiceProvider
         
     }
 }
+
