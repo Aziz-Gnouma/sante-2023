@@ -10,8 +10,7 @@ class Answer extends Model
 {
 
     use HasFactory;
-
-    
+   
 }
 $answer = new Answer();
 $answer->subject = $request->input('subject');
