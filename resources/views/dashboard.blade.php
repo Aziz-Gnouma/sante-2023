@@ -163,7 +163,7 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26
                   </tbody>
                 </table>
               </div>
-             
+              @elseif(auth()->user()->hasRole('responsable_club'))       
                                                     
 
 @endif

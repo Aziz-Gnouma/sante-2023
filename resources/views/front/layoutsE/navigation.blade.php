@@ -28,7 +28,7 @@
                     $userID = Auth::guard('front')->user()->id;
                     $userName = Auth::guard('front')->user()->name;
                     $userEmail = Auth::guard('front')->user()->email;     
-                      
+                    
                        @endphp
 </head>
 
@@ -52,7 +52,7 @@
 					<li><a href="{{ route('consultation') }}">Consultaion</a></li>
                    
                     @php
-                    $userID = Auth::guard('front')->user()->id;
+                    
                     $ListesEP = DB::table('evenements as E')
                     ->join('participants as P', 'P.evennement_id', '=', 'E.id')
                     ->where('P.user_id', $userID)
@@ -86,15 +86,15 @@
                                
                                 <div class="p-3">
                                    <h6 style="color:white;">{{ $userEmail}}</h6>
-                                   <form method="POST" action="{{ route('admin.logout') }}">
+                                   <form method="POST" action="{{ route('logout') }}">
                                         @csrf
 
-                                        <x-responsive-nav-link :href="route('admin.logout')"
+                                        <x-responsive-nav-link :href="route('logout')"
                                                 onclick="event.preventDefault();
                                                             this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-responsive-nav-link>
-                                    </form>
+                                     </form>
 
                                 </div>
                                
@@ -108,7 +108,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border:none;>
                                 <i class="mdi mdi-bell-outline" ata-toggle="modal"></i>
                             <span>
-                            @if ($x == 0 || $y == 0)
+                            @if ($x == 0 && $y == 0)
                                     <img src="/patron/feedback0.png" style="width:30px;"  alt="">
                                 @else
                                     <img src="/patron/feedback1.png" style="width:30px;"   alt="">
@@ -122,7 +122,7 @@
                                 <div class=" text-center">
                                    <h6 style="color:white;">{{ $event->Nom_Evenement }} <form action="{{ route('admin.events.destroyParticipation', $event->evennement_id) }}" onsubmit="return confirm('Are you sure ?')" method="POST" class="inline">
                               @csrf
-                              @method('delete')
+                              @method('DELETE')
                               <button  class=" btn btn-danger" ><i class="bi bi-trash"></i></button>
                           </form></h6>
 
@@ -134,7 +134,7 @@
                                 <div class=" text-center">
                                     <h6 style="color:white;">{{ $event->Nom_Evenement }} <form action="{{ route('admin.events.destroyInterresant', $event->evennement_id) }}" onsubmit="return confirm('Are you sure ?')" method="POST" class="inline">
                                      @csrf
-                                       
+                                     @method('DELETE')
                                         <button  class="btn btn-danger" ><i class="bi bi-trash"></i></button>
                                     </form></h6>
                                 </div>

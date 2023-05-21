@@ -122,7 +122,7 @@ class EvenementController extends Controller
     {
         DB::table('interresants')->where('evennement_id', $id)->delete();
        
-        return redirect()->route('Evenement')->with('success', 'participante deleted');
+        return redirect()->route('Evenement')->with('success', 'Interresante deleted');
    
     }
 
