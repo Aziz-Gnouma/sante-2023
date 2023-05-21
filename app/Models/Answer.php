@@ -10,8 +10,7 @@ class Answer extends Model
 {
 
     use HasFactory;
-
-    
+   
 }
 
 
