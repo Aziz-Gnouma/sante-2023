@@ -6,6 +6,8 @@ use App\Models\User;
 
 
 use App\Models\Evenement;
+use App\Models\Interresant;
+use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -32,6 +34,7 @@ class EvenementController extends Controller
 
         return view('events.index',compact('events'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -85,6 +88,42 @@ class EvenementController extends Controller
     {
         $event = Evenement::findOrFail($id);
         return view('events.show', compact('event'));
+    }
+
+    public function interesser($event_id,$user_id)
+    {
+        $newInterresant = new Interresant();
+        $newInterresant-> user_id =$user_id;
+        $newInterresant-> evennement_id =$event_id;
+         // Sauvegarde dans la BD
+         $newInterresant->save();
+         return redirect()->route('Evenement')->with('success', 'interressé');
+   
+    }
+
+    public function participer($event_id,$user_id)
+    {
+        $newParticipant = new Participant();
+        $newParticipant-> user_id =$user_id;
+        $newParticipant-> evennement_id =$event_id;
+         // Sauvegarde dans la BD
+         $newParticipant->save();
+         return redirect()->route('Evenement')->with('success', 'you are participate');
+   
+    }
+    public function destroyParticipation($id)
+    {
+        DB::table('participants')->where('evennement_id', $id)->delete();
+       
+        return redirect()->route('Evenement')->with('success', 'participante deleted');
+   
+    }
+    public function destroyInterresant($id)
+    {
+        DB::table('interresants')->where('evennement_id', $id)->delete();
+       
+        return redirect()->route('Evenement')->with('success', 'participante deleted');
+   
     }
 
     /**

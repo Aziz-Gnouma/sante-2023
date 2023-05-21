@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\EvenementController as AdminEvenementController;;
+
 
 use App\Models\Appointment;
 use App\Http\Controllers\Admin\{
@@ -117,6 +119,10 @@ Route::get('/Evenement', function () {
     return view('front.Evenement');
 })->middleware(['front'])->name('Evenement');
 
+Route::post('admin/events/{event}/interesser/{userID}', [EvenementController::class, 'interesser'])->name('admin.events.interesser');
+Route::post('admin/events/{event}/participer/{userID}', [EvenementController::class, 'participer'])->name('admin.events.participer');
+Route::delete('admin/events/{event}/participation', [EvenementController::class, 'destroyParticipation'])->name('admin.events.destroyParticipation');
+Route::delete('admin/events/{event}/interresant', [EvenementController::class, 'destroyInterresant'])->name('admin.events.destroyInterresant');
 
 require __DIR__.'/front_auth.php';
 

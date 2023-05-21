@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="patron/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="patron/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="patron/css/style.css" type="text/css">
-
+    @php
+                    $userID = Auth::guard('front')->user()->id;
+                     @endphp
     <style>
         #participer {
             margin-left:70%;
@@ -76,22 +78,7 @@
    <!-- Hero Section Begin -->
    <section class="hero-section set-bg" data-setbg="/patron/img/hero.jpg" style="width:140.43%">
        <div class="container">
-           <div>
-
-               <div class="counter-section bg-gradient">
-                   <div class="container">
-                       <div class="row">
-                           <div class="">
-                               <div class="counter-text">
-                                   <span> Welcome <span sec:authentication="principal.username">User</span></span>
-                                   
-                               </div>
-                           </div>
-                           
-                       </div>
-                   </div>
-               </div>
-           </div>
+           
            <div class="row">
                <div class="col-lg-7">
 
@@ -385,7 +372,7 @@
                          
                        <div class="tab-pane" id="tabs-1" role="tabpanel">
                        @php
-                       $evenements = DB::table('evenements')->get();
+                       $events = DB::table('evenements')->get();
 
 @endphp
     <div class="tab-pane active">
@@ -396,7 +383,7 @@
 <div class="st-content">
 
 <div class="container">
-    @foreach ($evenements as $evenement)
+    @foreach ($events as $event)
     <div class="row">
         <div class="col-lg-3">
             <div class="sc-pic">
@@ -405,21 +392,29 @@
         </div>
         <div class="col-lg-5">
             <div class="sc-text">
-                <h4>{{ $evenement->Nom_Evenement }}</h4>
+                <h4>{{ $event->Nom_Evenement }}</h4>
                 <ul>
-                    <li><i class="fa fa-user"></i> {{ $evenement->Nom_club }}</li>
-                    <li><i class="fa fa-envelope"></i> {{ $evenement->Email }}</li>
+                    <li><i class="fa fa-user"></i> {{ $event->Nom_club }}</li>
+                    <li><i class="fa fa-envelope"></i> {{ $event->Email }}</li>
                 </ul>
             </div>
         </div>
         <div class="col-lg-4">
             <ul class="sc-widget">
-                <li><i class="fa fa-clock-o"></i> {{ $evenement->date }}</li>
-                <li><i class="fa fa-map-marker"></i> {{ $evenement->description }}</li>
+                <li><i class="fa fa-clock-o"></i> {{ $event->date }}</li>
+                <li><i class="fa fa-map-marker"></i> {{ $event->description }}</li>
             </ul>
         </div>
-        <button id="participer" class="btn btn-info">Intereser</button>
-        <button class="btn btn-success">participer</button>
+        <div class="col-lg-4 d-flex justify-content-end">
+    <form action="{{ route('admin.events.interesser', [$event->id, $userID]) }}" class="d-inline-block" method="post">
+    @csrf   
+    <button id="participer" class="btn btn-info">Interessé</button>
+    </form>
+    <form action="{{ route('admin.events.participer', [$event->id, $userID]) }}" class="d-inline-block" style="margin-left: 100px;" method="post">
+    @csrf   
+    <button class="btn btn-success">Participer</button>
+    </form>
+</div>
 
 
     </div>
