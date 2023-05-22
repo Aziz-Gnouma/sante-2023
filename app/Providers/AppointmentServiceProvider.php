@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Mailsetting;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Appointment;
+
 use Illuminate\Support\Facades\View;
 
 use Config;
@@ -29,13 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('dashboard', function ($view) {
-            $appointments = Appointment::all();
-            $view->with('appointments', $appointments);
-        });
 
-        $appointments = Appointment::all();
-        View::share('appointments', $appointments);
 
         Schema::defaultStringLength(191);
         if (\Schema::hasTable('mailsettings')) {

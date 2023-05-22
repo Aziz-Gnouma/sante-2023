@@ -42,6 +42,12 @@ Route::delete('/admin/appointments/{name}', function ($id) {
 Route::view('/listeConsultationAccepter', 'listeConsultationAccepter');
 
 
+Route::delete('/appointments/{id}', function ($id) {
+    DB::table('appointments')->where('id', $id)->delete();
+    return redirect()->back()->with('success', 'Appointment deleted successfully.');
+})->name('appointments.destroy');
+
+
 
 Route::post('/answer', function (Illuminate\Http\Request $request) {
     $validatedData = $request->validate([
