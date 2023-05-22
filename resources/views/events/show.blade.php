@@ -172,7 +172,7 @@
         <p class="fs-5">Description : <span class="text-success">{{ $event->description }}</span></p>
         <p class="fs-5">Nom du Club : <span class="text-success">{{ $event->Nom_club }}</span></p>
         <p class="fs-5">Email :<span class="text-success"> {{ $event->Email }}</span></p>
-        <p class="fs-5">Statut Publication :<small class="text-body-secondary text-success"> {{ $event->publish }}</small></p>
+        <p class="fs-5">Statut Publication :<small class="text-body-secondary text-success">  @if  ($event->publish == 0) Non publié @else Publié @endif</small></p>
         <p class="fs-5">Date Evenement :<small class="text-body-secondary text-success"> {{ $event->date }}</small></p>
       
         </div>
