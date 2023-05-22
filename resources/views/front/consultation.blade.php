@@ -211,8 +211,10 @@
             <input type="text"name="name" placeholder="your name" class="box" class="input1" >
             <input type="number"name="number" placeholder="your number" class="box">
             <input type="email"name="email" placeholder="your email" class="box">
+            <h6>Choose a consultation date</h6>
             <input type="date"name="date" class="box">
             <input type="submit" name="submit" value="appointment now" class="btn" id="submitForm">
+            
             <script>
    $("#submitForm").click(function() {
       alert(" Your appointment has been successfully saved");

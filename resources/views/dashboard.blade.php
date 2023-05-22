@@ -98,41 +98,49 @@
     </div>
 </div>
 @elseif(auth()->user()->hasRole('psy'))
+<div class="container mx-auto px-6 py-2">
+    <div class="text-right">
+        <a style="background-color: blue; color: black;" href="/contact" class="bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors">New consultation Acceptance</a>
+    </div>
 
-<div class="bg-white shadow-md rounded my-6">
-                <table class="table table-hover">
-                  <thead class="table-dark">
-                    <tr>
-                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">User Name</th>
-                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">email</th>
-                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">number</th>
-                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">appoiment Date</th>
-                      <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody style="background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26%, rgba(192,192,198,1) 100%);">
-                    
+    <div class="bg-white shadow-md rounded my-6">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">User Name</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">email</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">number</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">appoiment Date</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody style="background: rgb(255,255,255);
+                background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26%, rgba(192,192,198,1) 100%);">
+                @foreach ($appointments as $appointment)
+                <tr>
+                    <td>{{ $appointment->name }}</td>
+                    <td>{{ $appointment->email }}</td>
+                    <td>{{ $appointment->number }}</td>
+                    <td>{{ $appointment->date }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light text-right">
+                        <button type="button" onclick="deleteAppointment({{ $appointment->id }})" style="background-color: red; color: white;" class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">delete</button>
+                        <button class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue delete-appointment" id="zzh" style="background-color: orange; color: white;"class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue">refuse</button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 
-                      @foreach ($appointments as $appointment)
-        <tr>
-            <td>{{ $appointment->name }}</td>
-            <td>{{ $appointment->email }}</td>
-            <td>{{ $appointment->number }}</td>
-            <td>{{ $appointment->date }}</td>
-            <td class="py-4 px-6 border-b border-grey-light text-right">
-                                                    <a href="/contact" style="background-color: blue; color: white; " class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Accept</a>
-                          
-                                                    <form action="http://127.0.0.1:8000/admin/users/2" method="POST" class="inline">
-                              <input type="hidden" name="_token" value="cSL77gTFpaKQ8fLh4kaWzMd4frFwcxFHqRnKBoEU">                              <input type="hidden" name="_method" value="delete">                              <button class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue delete-appointment" id="zzh" style="background-color: red; color: white;"class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400 hover:text-blue">refuse</button>
-                              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.delete-appointment').click(function(e) {
             e.preventDefault();
             var row = $(this).closest('tr'); // Récupère la ligne parente du bouton de suppression
             var appointmentId = row.data('appointment-id'); // Obtient l'ID de l'élément à supprimer
-            var confirmation = confirm("Are you sure you want to delete this appointment?"); // Demande une confirmation
+            var confirmation = confirm("Are you sure you want to refuse this appointment?"); // Demande une confirmation
 
             if (confirmation) {
                 $.ajax({
@@ -143,7 +151,7 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26
                     },
                     success: function(response) {
                         row.remove(); // Supprime la ligne de la table
-                        alert("Appointment deleted successfully.");
+                        alert("Appointment refuse successfully.");
                     },
                     error: function(xhr) {
                         alert("An error occurred while deleting the appointment.");
@@ -152,19 +160,28 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(218,218,218,1) 26
             }
         });
     });
-</script>
 
-                          </form>
-                          
-                        </td>
-        </tr>
-        @endforeach
-                                          
-                  </tbody>
-                </table>
-              </div>
-              @elseif(auth()->user()->hasRole('responsable_club'))       
-                                                    
+    function deleteAppointment(appointmentId) {
+        var confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet élément ?");
+
+        if (confirmation) {
+            $.ajax({
+                url: '/appointments/' + appointmentId,
+                type: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert("Appointment deleted successfully.");
+                    // Effectuer d'autres actions si nécessaire, comme mettre à jour l'affichage de la liste des rendez-vous
+                },
+                error: function(xhr) {
+                    alert("An error occurred while deleting the appointment.");
+                }
+            });
+        }
+    }
+</script>
 
 @endif
 </x-app-layout>

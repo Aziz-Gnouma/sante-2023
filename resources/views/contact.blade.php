@@ -3456,43 +3456,44 @@ textarea.input1 + .shadow-input1 {
 <div class="contact1">
     <div class="container-contact1">
         <div class="contact1-pic js-tilt" data-tilt>
-            <h1 style=" color: green">Welcome Doctor</h1>
+            <h1 style="color: green">Welcome Doctor</h1>
         </div>
-        
-		
-		<form method="POST" action="/answer" class="contact1-form validate-form">
 
-    <!-- Reste du formulaire -->
-    @csrf
+        <form method="POST" action="/answer" class="contact1-form validate-form">
+            @csrf
 
-    <span class="contact1-form-title">Answer</span>
-    <div class="wrap-input1 validate-input" data-validate="Subject is required">
-        <input class="input1" type="text" name="name" placeholder="User Name">
-        <span class="shadow-input1"></span>
-    </div>
+            <span class="contact1-form-title">Answer</span>
 
-    <div class="wrap-input1 validate-input" data-validate="Subject is required">
-        <input class="input1" type="text" name="subject" placeholder="Fix date by hour and consultation type">
-        <span class="shadow-input1"></span>
-    </div>
-	
+            <div class="wrap-input1 validate-input" data-validate="Subject is required">
+                <input class="input1" type="text" name="name" placeholder="User Name">
+                <span class="shadow-input1"></span>
+            </div>
 
-    <div class="wrap-input1 validate-input">
-        <textarea class="input1" name="message" placeholder="Other description"></textarea>
-        <span class="shadow-input1"></span>
-    </div>
+            <div class="wrap-input1 validate-input" data-validate="Subject is required">
+                <input class="input1" type="text" name="subject" placeholder="Fix date by hour and consultation type">
+                <span class="shadow-input1"></span>
+            </div>
 
-    <div class="container-contact1-form-btn">
-	<button onclick="window.location.href='http://127.0.0.1:8000/admin/dashboard'" class="contact1-form-btn">
-    <span>Send answer</span>
-    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-</button>
-    </div>
-</form>
+            <div class="wrap-input1 validate-input">
+                <textarea class="input1" name="message" placeholder="Other description"></textarea>
+                <span class="shadow-input1"></span>
+            </div>
 
+            <div class="container-contact1-form-btn">
+                <button class="contact1-form-btn" onclick="showConfirmation()">
+                    <span>Send answer</span>
+                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 
+<script>
+    function showConfirmation() {
+        alert("Your answer has been sent successfully!");
+    }
+</script>
 
 
 
