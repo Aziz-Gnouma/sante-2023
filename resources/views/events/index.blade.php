@@ -60,7 +60,7 @@
                         <td class="py-4 px-6 border-b border-grey-light">{{ $event->description }}</td>
 
                         <td class="py-4 px-6 border-b border-grey-light text-right">
-                        <a href="{{route('admin.events.edit', $event->id)}}" class="btn btn-primary" style="font-size:15px"><i class="bi bi-info-circle-fill"></i></a>
+                        <a href="{{route('admin.events.show', $event->id)}}" class="btn btn-primary" style="font-size:15px"><i class="bi bi-info-circle-fill"></i></a>
                           @can('Evenement edit')
                           <a style="background-color: blue; color: white;" href="{{route('admin.events.edit', $event->id)}}" class="btn btn-warning"><i style="font-size:15px" class="bi bi-pencil-square"></i></a>
                           @endcan
